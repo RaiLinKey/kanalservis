@@ -1,6 +1,6 @@
 # kanalservis
 Тестовое задание для устройства на работу в компанию ООО «Каналсервис» сделанное Еремеевым Романом Александровичем.
-Ссылка таблицу Google Sheets:
+Ссылка на таблицу Google Sheets:
 https://docs.google.com/spreadsheets/d/1gv6K3S_gltFpsH4xsYGYKjYGEx1hj3eSFWX5e8xPrK4
 ## Инструкция по запуску разработанных скриптов
 ### **1. Запуск PostgreSQL**
