@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href='{% static "frontend/css/style.css" %}'>
+    <title>KS web on Django and React</title>
+</head>
+<body>
+    <header>
+        <img src='{% static "frontend/img/httpkanalservisru.png" %}'' alt="">
+    </header>
+<div id="app">
+    <!-- React will load here -->
+</div>
+</body>
+<script src='{% static "frontend/main.js/main.js" %}'></script>
+</html>
