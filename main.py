@@ -12,9 +12,13 @@ import os
 from math import ceil
 from time import sleep
 
-
 CREDENTIALS_FILES = 'credentials.json'
 spreadsheet_id = '1gv6K3S_gltFpsH4xsYGYKjYGEx1hj3eSFWX5e8xPrK4'
+user = 'postgres',
+password = '1234',
+host = '127.0.0.1',
+port = '5432',
+database = 'kanalservis'
 
 
 # функция получения значений из Google Sheets
@@ -65,11 +69,11 @@ def usd_curs() -> int:
 def insert_data_to_db(values: tuple):
     try:
         conn = psycopg2.connect(
-            user='postgres',
-            password='1234',
-            host='127.0.0.1',
-            port='5432',
-            database='kanalservis'
+            user=user,
+            password=password,
+            host=host,
+            port=port,
+            database=database
         )
         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         db_values = ''
@@ -106,11 +110,11 @@ def insert_data_to_db(values: tuple):
 def get_data_from_db() -> tuple:
     try:
         conn = psycopg2.connect(
-            user='postgres',
-            password='1234',
-            host='127.0.0.1',
-            port='5432',
-            database='kanalservis'
+            user=user,
+            password=password,
+            host=host,
+            port=port,
+            database=database
         )
         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = conn.cursor()
@@ -135,11 +139,11 @@ def get_data_from_db() -> tuple:
 def delete_from_db(values: tuple):
     try:
         conn = psycopg2.connect(
-            user='postgres',
-            password='1234',
-            host='127.0.0.1',
-            port='5432',
-            database='kanalservis'
+            user=user,
+            password=password,
+            host=host,
+            port=port,
+            database=database
         )
         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = conn.cursor()
@@ -173,11 +177,11 @@ def delete_from_db(values: tuple):
 def update_data_in_db(values: list):
     try:
         conn = psycopg2.connect(
-            user='postgres',
-            password='1234',
-            host='127.0.0.1',
-            port='5432',
-            database='kanalservis'
+            user=user,
+            password=password,
+            host=host,
+            port=port,
+            database=database
         )
         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = conn.cursor()
@@ -224,7 +228,8 @@ def analyze(values: tuple, db_data: tuple):
         db_data = get_data_from_db()
     for i in range(len(values)):
         try:
-            if int(values[i][2]) != db_data[i][2] or datetime.strptime(values[i][3], '%d.%m.%Y').date() != db_data[i][3]:
+            if int(values[i][2]) != db_data[i][2] or datetime.strptime(values[i][3], '%d.%m.%Y').date() != db_data[i][
+                3]:
                 update_data_in_db(values[i])
                 print('UPDATED')
         except ValueError:

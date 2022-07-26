@@ -11,17 +11,22 @@ updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
 # время указано по UTC. Время МСК +3
 notis_time = time(7, 00, 00, 000000, tzinfo=None)
+user = 'postgres',
+password = '1234',
+host = '127.0.0.1',
+port = '5432',
+database = 'kanalservis'
 
 
 # получение списка ползователей, когда либо подписанных на уведомления
 def get_chat_ids():
     try:
         conn = psycopg2.connect(
-            user='postgres',
-            password='1234',
-            host='127.0.0.1',
-            port='5432',
-            database='kanalservis'
+            user=user,
+            password=password,
+            host=host,
+            port=port,
+            database=database
         )
         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = conn.cursor()
@@ -46,11 +51,11 @@ def get_chat_ids():
 def get_sent_notis(_chat_id) -> tuple:
     try:
         conn = psycopg2.connect(
-            user='postgres',
-            password='1234',
-            host='127.0.0.1',
-            port='5432',
-            database='kanalservis'
+            user=user,
+            password=password,
+            host=host,
+            port=port,
+            database=database
         )
         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = conn.cursor()
@@ -78,11 +83,11 @@ def get_sent_notis(_chat_id) -> tuple:
 def new_sent_notis(_chat_id, orders):
     try:
         conn = psycopg2.connect(
-            user='postgres',
-            password='1234',
-            host='127.0.0.1',
-            port='5432',
-            database='kanalservis'
+            user=user,
+            password=password,
+            host=host,
+            port=port,
+            database=database
         )
         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = conn.cursor()
@@ -104,11 +109,11 @@ def new_sent_notis(_chat_id, orders):
 def get_data_from_db() -> tuple:
     try:
         conn = psycopg2.connect(
-            user='postgres',
-            password='1234',
-            host='127.0.0.1',
-            port='5432',
-            database='kanalservis'
+            user=user,
+            password=password,
+            host=host,
+            port=port,
+            database=database
         )
         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = conn.cursor()
@@ -133,11 +138,11 @@ def get_data_from_db() -> tuple:
 def new_chat_id(_chat_id: str):
     try:
         conn = psycopg2.connect(
-            user='postgres',
-            password='1234',
-            host='127.0.0.1',
-            port='5432',
-            database='kanalservis'
+            user=user,
+            password=password,
+            host=host,
+            port=port,
+            database=database
         )
         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = conn.cursor()
@@ -205,11 +210,11 @@ def send_notis(context):
 def unsub(update, context):
     try:
         conn = psycopg2.connect(
-            user='postgres',
-            password='1234',
-            host='127.0.0.1',
-            port='5432',
-            database='kanalservis'
+            user=user,
+            password=password,
+            host=host,
+            port=port,
+            database=database
         )
         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = conn.cursor()
@@ -239,11 +244,11 @@ def sub(update, context):
     else:
         try:
             conn = psycopg2.connect(
-                user='postgres',
-                password='1234',
-                host='127.0.0.1',
-                port='5432',
-                database='kanalservis'
+                user=user,
+                password=password,
+                host=host,
+                port=port,
+                database=database
             )
             conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
             cursor = conn.cursor()
